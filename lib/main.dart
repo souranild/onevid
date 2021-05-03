@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onevid/screens/library.dart';
 import 'screens/home.dart';
 
 void main() => runApp(new MyApp());

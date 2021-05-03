@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:onevid/const.dart';
 
 class Home extends StatefulWidget {
@@ -7,10 +6,11 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
+int _currentIndex = 0;
+
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    int _currentIndex;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -49,7 +49,24 @@ class _HomeState extends State<Home> {
               ))
         ],
       ),
-      bottomNavigationBar: buildNavBar(),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Color(0xFF6200EE),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white.withOpacity(.60),
+        selectedFontSize: 14,
+        unselectedFontSize: 14,
+        items: navBarIcons.map((NavBar navBar) {
+          return BottomNavigationBarItem(
+              icon: Icon(navBar.icon),
+              backgroundColor: navBar.color,
+              label: navBar.label);
+        }).toList(),
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() => {_currentIndex = index, print(_currentIndex)});
+        },
+      ),
     );
   }
 }

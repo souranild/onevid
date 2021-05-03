@@ -6,8 +6,8 @@ const mgcolor = Color(0xFF292929);
 const iconColor = Color(0xFF607d8b);
 
 class NavBar {
-  const NavBar(this.title, this.icon, this.color);
-  final String title;
+  const NavBar(this.label, this.icon, this.color);
+  final String label;
   final IconData icon;
   final MaterialColor color;
 }
@@ -18,18 +18,10 @@ const List<NavBar> navBarIcons = <NavBar>[
   NavBar('Settings', Icons.settings, Colors.orange),
 ];
 
-BottomNavigationBar buildNavBar() {
-  return BottomNavigationBar(
-    // onTap: (int index) {
-    //   setState(() {
-    //     _currentIndex = index;
-    //   });
-    // },
-    items: navBarIcons.map((NavBar navBar) {
-      return BottomNavigationBarItem(
-          icon: Icon(navBar.icon),
-          backgroundColor: navBar.color,
-          title: Text(navBar.title));
-    }).toList(),
-  );
-}
+// ignore: non_constant_identifier_names
+List<BottomNavigationBarItem> NavBarIcons = navBarIcons.map((NavBar navBar) {
+  return BottomNavigationBarItem(
+      icon: Icon(navBar.icon),
+      backgroundColor: navBar.color,
+      label: navBar.label);
+}).toList();
