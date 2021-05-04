@@ -7,19 +7,19 @@ class Home extends StatefulWidget {
 }
 
 // final Size size = MediaQuery.of(context).size;
-int _currentIndex = 1;
 
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.yellow,
-      body: SafeArea(
-        child: Column(
+    var size = MediaQuery.of(context).size;
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.yellow,
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-                height: 50,
+                height: size.height / 10,
                 margin: EdgeInsets.fromLTRB(15, 15, 15, 0),
                 color: Color(0xFF1F1F1F),
                 child: TextField(
@@ -39,8 +39,8 @@ class _HomeState extends State<Home> {
                 )),
           ],
         ),
+        bottomNavigationBar: CustomBottomNavBar(),
       ),
-      bottomNavigationBar: CustomBottomNavBar(),
     );
   }
 }

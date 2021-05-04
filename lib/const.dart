@@ -3,46 +3,10 @@ import 'package:flutter/material.dart';
 const bgcolor = Color(0xFF000000);
 const fgcolor = Colors.teal;
 const mgcolor = Color(0xFF292929);
-const iconColor = Color(0xFF607d8b);
+const inactiveIconColor = Color(0xFF607d8b);
+const activeIconColor = Colors.white;
 
-class NavBar {
-  const NavBar(this.label, this.icon, this.color);
-  final String label;
-  final IconData icon;
-  final MaterialColor color;
-}
-
-const List<Widget> navBarIcons = <Widget>[
-  Icon(
-    Icons.bookmark,
-    color: Colors.white,
-    size: 45,
-  ),
-  Padding(
-    padding: EdgeInsets.all(10),
-  ),
-  Icon(
-    Icons.home,
-    color: Colors.white,
-    size: 45,
-  ),
-  Padding(
-    padding: EdgeInsets.all(10),
-  ),
-  Icon(
-    Icons.settings,
-    color: Colors.white,
-    size: 45,
-  ),
-];
-
-// ignore: non_constant_identifier_names
-// List<BottomNavigationBarItem> NavBarIcons = navBarIcons.map((NavBar navBar) {
-//   return BottomNavigationBarItem(
-//       icon: Icon(navBar.icon),
-//       backgroundColor: navBar.color,
-//       label: navBar.label);
-// }).toList();
+int currindex = 1;
 
 class CustomBottomNavBar extends StatefulWidget {
   @override
@@ -53,8 +17,9 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+
     return Stack(
-      alignment: Alignment.center,
+      alignment: Alignment.bottomCenter,
       children: [
         Positioned(
           bottom: 10,
@@ -66,7 +31,56 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
               color: Color(0xFF232323),
             ),
             child: Row(
-              children: navBarIcons,
+              children: [
+                IconButton(
+                  padding: EdgeInsets.only(bottom: 4),
+                  icon: Icon(
+                    Icons.bookmark,
+                    color: currindex == 0 ? activeIconColor : inactiveIconColor,
+                    size: 35,
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/library');
+                    setState(() {
+                      currindex = 0;
+                    });
+                  },
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10),
+                ),
+                IconButton(
+                  padding: EdgeInsets.only(bottom: 4),
+                  icon: Icon(
+                    Icons.home,
+                    color: currindex == 1 ? activeIconColor : inactiveIconColor,
+                    size: 35,
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/');
+                    setState(() {
+                      currindex = 1;
+                    });
+                  },
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10),
+                ),
+                IconButton(
+                  padding: EdgeInsets.only(bottom: 4),
+                  icon: Icon(
+                    Icons.settings,
+                    color: currindex == 2 ? activeIconColor : inactiveIconColor,
+                    size: 35,
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/settings');
+                    setState(() {
+                      currindex = 2;
+                    });
+                  },
+                )
+              ],
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
             ),
@@ -76,6 +90,23 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     );
   }
 }
+
+// var NavBarNavigator = Navigator(
+//   onGenerateInitialRoutes: (RouteSettings settings) {
+//     return MaterialPageRoute(
+//         settings: settings,
+//         builder: (BuildContext context) {
+//           switch (settings.name) {
+//             case '/':
+//               return Home();
+//             case '/settings':
+//               return SettingsPage();
+//             case '/library':
+//               return LibraryPage();
+//           }
+//         });
+//   },
+// );
 
 // BottomNavigationBar(
 //         type: BottomNavigationBarType.shifting,
