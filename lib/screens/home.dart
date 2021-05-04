@@ -23,19 +23,23 @@ class _HomeState extends State<Home> {
           Expanded(
             flex: 1,
             child: Container(
-              margin: EdgeInsets.fromLTRB(15, 15, 15, 0),
-              color: Color(0xFF1F1F1F),
-              child: TextField(
+                margin: EdgeInsets.fromLTRB(15, 15, 15, 0),
+                color: Color(0xFF1F1F1F),
+                child: TextField(
                   decoration: InputDecoration(
-                icon: Icon(
-                  IconData(
-                    0xe5d2,
+                    hintText: 'Search',
+                    fillColor: Colors.white70,
+                    prefixIcon: Icon(Icons.search),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                      borderSide: BorderSide(color: Colors.green, width: 2),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderSide: BorderSide(color: Colors.green, width: 2),
+                    ),
                   ),
-                  color: Colors.white,
-                  size: 15,
-                ),
-              )),
-            ),
+                )),
           ),
           Expanded(
               flex: 5,
