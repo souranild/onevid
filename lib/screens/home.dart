@@ -6,13 +6,14 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-int _currentIndex = 0;
+// final Size size = MediaQuery.of(context).size;
+int _currentIndex = 1;
 
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.yellow,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -39,24 +40,7 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.shifting,
-        backgroundColor: Color(0xFF6200EE),
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white.withOpacity(.60),
-        selectedFontSize: 14,
-        unselectedFontSize: 14,
-        items: navBarIcons.map((NavBar navBar) {
-          return BottomNavigationBarItem(
-              icon: Icon(navBar.icon),
-              backgroundColor: navBar.color,
-              label: navBar.label);
-        }).toList(),
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() => {_currentIndex = index, print(_currentIndex)});
-        },
-      ),
+      bottomNavigationBar: CustomBottomNavBar(),
     );
   }
 }
