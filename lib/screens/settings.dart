@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../const.dart';
+import 'package:onevid/widgets/navbar.dart';
 
 class SettingsPage extends StatefulWidget {
   @override

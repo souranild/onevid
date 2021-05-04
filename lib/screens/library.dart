@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onevid/const.dart';
+import 'package:onevid/widgets/navbar.dart';
 
 class LibraryPage extends StatefulWidget {
   @override

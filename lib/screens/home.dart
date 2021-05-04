@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:onevid/const.dart';
+import 'package:onevid/widgets/navbar.dart';
 
-class Home extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _HomePageState createState() => _HomePageState();
 }
 
 // final Size size = MediaQuery.of(context).size;
 
-class _HomeState extends State<Home> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
+        extendBody: true,
         backgroundColor: Colors.yellow,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
