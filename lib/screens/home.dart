@@ -13,48 +13,34 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        elevation: 0,
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(
-            flex: 1,
-            child: Container(
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+                height: 50,
                 margin: EdgeInsets.fromLTRB(15, 15, 15, 0),
                 color: Color(0xFF1F1F1F),
                 child: TextField(
                   decoration: InputDecoration(
                     hintText: 'Search',
                     fillColor: Colors.white70,
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon: Icon(Icons.menu),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                      borderSide: BorderSide(color: Colors.green, width: 2),
+                      borderSide: BorderSide(color: Colors.blue, width: 2),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                      borderSide: BorderSide(color: Colors.green, width: 2),
+                      borderSide: BorderSide(color: Colors.blue, width: 2),
                     ),
                   ),
                 )),
-          ),
-          Expanded(
-              flex: 5,
-              child: Container(
-                color: bgcolor,
-              )),
-          Expanded(
-              flex: 5,
-              child: Container(
-                color: bgcolor,
-              ))
-        ],
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
+        type: BottomNavigationBarType.shifting,
         backgroundColor: Color(0xFF6200EE),
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white.withOpacity(.60),
