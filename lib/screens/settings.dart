@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onevid/widgets/navbar.dart';
+import 'package:onevid/widgets/bottomnavbar.dart';
 
 final List<Widget> settings = [
   ListTile(
